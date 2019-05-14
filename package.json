@@ -1,0 +1,9 @@
+{
+  "name": "conversation-echo-api",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-domain-manager": "^3.2.1"
+  }
+}

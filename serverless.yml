@@ -1,0 +1,38 @@
+service: conversation-echo-api # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: eu-central-1
+
+plugins:
+  - serverless-domain-manager
+functions:
+  list-conversations:
+    handler: handler.list_conversations
+    events:
+      - http:
+          path: conversations
+          method: get
+          cors: true
+  list-messages:
+    handler: handler.list_messages
+    events:
+      - http:
+          path: conversations/{conversation_id}/messages
+          method: get
+          cors: true
+
+
+custom:
+  customDomain:
+    domainName: conversations-echo-api.tamedia-origami.ch
+    basePath: ''
+    stage: ${self:provider.stage}
+    certificateName: '*.tamedia-origami.ch'
+    createRoute53Record: true
+    endpointType: 'regional'
