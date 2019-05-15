@@ -9,6 +9,10 @@ provider:
   runtime: python3.7
   region: eu-central-1
 
+package:
+ include:
+   - models/**
+
 plugins:
   - serverless-domain-manager
 functions:

@@ -1,7 +1,9 @@
 import json
 
+from models.conversation import Conversation
+
 def list_conversations(event, context):
-    conversations = []
+    conversations = Conversation.build()
 
     response = {
         "statusCode": 200,
