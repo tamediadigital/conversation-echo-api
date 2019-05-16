@@ -15,6 +15,9 @@ def build_user(fake):
 fake = Faker('de_CH')
 
 current_user = build_user(fake)
+f = open('./data/current_user.json', 'w')
+f.write(json.dumps(current_user))
+
 users = []
 conversations = []
 messages = {}

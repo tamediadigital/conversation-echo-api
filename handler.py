@@ -1,7 +1,6 @@
 import json
 
-from models.conversation import Conversation
-from models.message import Message
+from models import Conversation, Message, User
 
 def list_conversations(event, context):
     conversations = Conversation.all()
@@ -25,6 +24,15 @@ def list_messages(event, context):
     response = {
         "statusCode": 200,
         "body": json.dumps(messages)
+    }
+
+    return response
+
+def current_user(event, context):
+    current_user = User.current()
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(current_user)
     }
 
     return response
