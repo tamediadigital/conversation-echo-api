@@ -8,10 +8,14 @@ provider:
   name: aws
   runtime: python3.7
   region: eu-central-1
+  memorySize: 256
 
 package:
- include:
-   - models/**
+  include:
+    - models/**
+    - data/**
+  exclude:
+    - generate_fake_data.py
 
 plugins:
   - serverless-domain-manager
