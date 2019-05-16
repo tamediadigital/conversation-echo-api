@@ -1,4 +1,4 @@
-# conversation-echoi-api
+# conversation-echo-api
 
 ## Setup
 
