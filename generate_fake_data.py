@@ -12,6 +12,9 @@ def build_user(fake):
       'avatar_url': f'https://i.pravatar.cc/150?u={user_id}'
   }
 
+def take_created_at(element):
+  return element.get('created_at')
+
 fake = Faker('de_CH')
 
 current_user = build_user(fake)
@@ -49,12 +52,14 @@ for conversation in conversations:
   for i in range(2, randint(5, 10)):
     message = {
       'id': fake.uuid4(),
+      'created_at': fake.date_time_this_month().isoformat(),
       'participant': choice(conversation.get('participants')),
       'content': fake.sentences(nb=1)
     }
 
     conversation_messages.append(message)
 
+  conversation_messages.sort(key=take_created_at)
   messages[conversation.get('id')] = conversation_messages
 
 
