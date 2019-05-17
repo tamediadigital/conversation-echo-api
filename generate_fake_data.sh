@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import json
+from dateutil.tz import tzlocal
+
 from faker import Faker
 from random import randint, choice
 
@@ -54,7 +56,7 @@ for conversation in conversations:
   for i in range(2, randint(5, 10)):
     message = {
       'id': fake.uuid4(),
-      'created_at': fake.date_time_this_month().isoformat(),
+      'created_at': fake.date_time_this_month().replace(tzinfo=tzlocal()).isoformat(),
       'participant': choice(conversation.get('participants')),
       'content': fake.sentences(nb=1)[0]
     }
