@@ -34,6 +34,13 @@ functions:
           path: conversations/{conversation_id}/messages
           method: get
           cors: true
+  echo-message:
+    handler: handler.echo_message
+    events:
+      - http:
+          path: conversations/{conversation_id}/messages
+          method: post
+          cors: true
   current-user:
     handler: handler.current_user
     events:

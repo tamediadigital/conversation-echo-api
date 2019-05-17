@@ -23,6 +23,30 @@ def list_messages(event, context):
 
     return response
 
+def echo_message(event, context):
+    conversation_id = event.get('pathParameters', {}).get('conversation_id')
+    body = event.get('body')
+
+    if body != None:
+        message = json.loads(body)
+        echo = Message.echo(conversation_id, message)
+
+        response = {
+            'statusCode': 200,
+            'body': json.dumps(echo)
+        }
+    else:
+        error = {
+            "error": "no message provided"
+        }
+
+        response = {
+            'statusCode': 400,
+            'body': json.dumps(error)
+        }
+
+    return response
+
 def current_user(event, context):
     current_user = User.current()
 

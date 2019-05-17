@@ -1,5 +1,8 @@
 import json
 import os
+import uuid
+
+from models import Conversation
 
 class Message:
   @staticmethod
@@ -10,3 +13,13 @@ class Message:
       messages = json.load(messages_file)
       return messages.get(conversation_id)
 
+  @staticmethod
+  def echo(conversation_id, message):
+    conversation = Conversation.find(conversation_id)
+    participant = conversation.get('participants')[-1]
+
+    return {
+      'id': str(uuid.uuid4()),
+      'participant': participant,
+      'content': message.get('content')
+    }
