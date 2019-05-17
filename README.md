@@ -29,7 +29,7 @@ $ sls invoke local -f list-messages --data '{"pathParameters": { "conversation_i
 New fake data can be generated with the following command and will be stored in `data`:
 
 ```
-$ python3 generate_fake_data.py
+$ ./generate_fake_data.sh
 ```
 
 ## Deployment
