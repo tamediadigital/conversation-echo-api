@@ -7,6 +7,9 @@ def list_conversations(event, context):
 
     response = {
         'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Origin': '*'
+        },
         'body': json.dumps(conversations)
     }
 
@@ -18,6 +21,9 @@ def list_messages(event, context):
 
     response = {
         'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Origin': '*'
+        },
         'body': json.dumps(messages)
     }
 
@@ -33,6 +39,9 @@ def echo_message(event, context):
 
         response = {
             'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*'
+            },
             'body': json.dumps(echo)
         }
     else:
@@ -42,6 +51,9 @@ def echo_message(event, context):
 
         response = {
             'statusCode': 400,
+            'headers': {
+                'Access-Control-Allow-Origin': '*'
+            },
             'body': json.dumps(error)
         }
 
@@ -52,6 +64,9 @@ def current_user(event, context):
 
     response = {
         'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Origin': '*'
+        },
         'body': json.dumps(current_user)
     }
 
