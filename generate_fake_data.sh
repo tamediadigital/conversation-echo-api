@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 from faker import Faker
 from random import randint, choice
@@ -8,7 +10,7 @@ def build_user(fake):
   return {
       'id': user_id,
       'first_name': fake.first_name(),
-      'lastname': fake.last_name(),
+      'last_name': fake.last_name(),
       'avatar_url': f'https://i.pravatar.cc/150?u={user_id}'
   }
 
@@ -54,7 +56,7 @@ for conversation in conversations:
       'id': fake.uuid4(),
       'created_at': fake.date_time_this_month().isoformat(),
       'participant': choice(conversation.get('participants')),
-      'content': fake.sentences(nb=1)
+      'content': fake.sentences(nb=1)[0]
     }
 
     conversation_messages.append(message)
