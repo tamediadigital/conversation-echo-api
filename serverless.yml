@@ -17,8 +17,6 @@ package:
   exclude:
     - generate_fake_data.py
 
-plugins:
-  - serverless-domain-manager
 functions:
   list-conversations:
     handler: handler.list_conversations
@@ -48,12 +46,3 @@ functions:
           path: user
           method: get
           cors: true
-
-custom:
-  customDomain:
-    domainName: conversation-echo-api.tamedia-origami.ch
-    basePath: ''
-    stage: ${self:provider.stage}
-    certificateName: '*.tamedia-origami.ch'
-    createRoute53Record: true
-    endpointType: 'regional'
